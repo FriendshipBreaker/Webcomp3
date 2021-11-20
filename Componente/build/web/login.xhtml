@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login Page</title>
+
+    </h:head>
+    <body style="background-color: background; display: flex; align-items: center; justify-content: center;">
+        <style>
+
+            .vertical-center {
+                margin: 0;
+                position: absolute;
+                top: 35%;
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+        </style>
+
+
+        
+        <p:panel class="vertical-center" header="Register" style="width:300px; " >
+
+            <p:growl id="mensajes" showDetail="true" life="5000" />
+            <h:panelGrid columns="2" id="pgDatos" cellpadding="8" />
+            <h:form id="formRegistro" >
+
+
+
+                <p:inputText id="EmailId" value="#{VerificationController.email}"  placeholder="Email" style="width:98%"/>
+
+                <br></br> <br></br><!-- comment -->
+                
+                <p:password id="pass1" value="#{VerificationController.password}" 
+                            validatorMessage="the passwords doesnt match " weakLabel="Weak" strongLabel="Strong" goodLabel="Good"
+                            match="pass2"  feedback="true"  promptLabel="insert a password" placeholder="Password" style="width:98%" />  
+                <p:message for="pass1" />
+     
+                <br></br> <br></br>
+
+
+                <div class="ui-g" >
+                    <div class="ui-g-6">
+                        <p:commandButton id="signupId" value="Log in"  action="#{VerificationController.login()}" />
+                    </div>
+                    <div class="ui-g-6">
+                        <p:commandButton  id="CancelId" value="Cancel" action="#{VerificationController.cancelar()}"/>
+                    </div>
+                </div>
+
+            </h:form>
+
+        </p:panel>
+    </body>
+</html>
